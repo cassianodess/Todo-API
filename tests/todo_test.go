@@ -23,7 +23,7 @@ func TestMain(m *testing.M) {
 	if err != nil {
 		log.Fatalf("Fail in connect with database: %v", err)
 	}
-	
+
 	db = repository
 
 	exitCode := m.Run()
@@ -69,6 +69,8 @@ func TestCreateTodoSuccessfully(t *testing.T) {
 		if recorder.Code != http.StatusCreated {
 			t.Errorf("Expected %d, but got %d", http.StatusCreated, recorder.Code)
 		}
+
+		db.Delete(&todo, "title = ?", todo.Title)
 	})
 
 }
