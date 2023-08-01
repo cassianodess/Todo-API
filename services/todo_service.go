@@ -27,7 +27,7 @@ func Create(todo *models.Todo) error {
 
 func Update(id string, todo *models.Todo) error {
 	var updatedTodo models.Todo
-	result := repository.Context.Find(&updatedTodo, "id = ?", id)
+	result := repository.Context.First(&updatedTodo, "id = ?", id)
 
 	if result.Error != nil {
 		return result.Error
@@ -45,6 +45,11 @@ func Update(id string, todo *models.Todo) error {
 
 func Delete(id string) (models.Todo, error) {
 	var todo models.Todo
-	result := repository.Context.Clauses(clause.Returning{}).Delete(&todo, "id = ?", id)
+	result := repository.Context.First(&todo, "id = ?", id)
+
+	if result.Error == nil {
+		result = repository.Context.Clauses(clause.Returning{}).Delete(&todo, "id = ?", id)
+	}
+
 	return todo, result.Error
 }

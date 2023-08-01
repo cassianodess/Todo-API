@@ -34,7 +34,7 @@ To make the HTTP requests below, was used [httpie](https://httpie.io):
 
 - Create Todo
 ```
-$ http POST :5141/todos title="Todo 1" description="Desc Todo 1"
+http POST :8080/todos title="Todo 1" description="Desc Todo 1"
 ```
 - Response body
 ```
@@ -51,7 +51,7 @@ $ http POST :5141/todos title="Todo 1" description="Desc Todo 1"
 
 - List Todo
 ```
-$ http GET :5141/todos
+http GET :8080/todos
 ```
 - Response body
 ```
@@ -72,7 +72,7 @@ $ http GET :5141/todos
 
 - Update Todo
 ```
-$ http PUT :5141/todos/<id> title="Todo 1 Up" description="Desc Todo 1 Up"
+http PUT :8080/todos/<id> title="Todo 1 Up" description="Desc Todo 1 Up"
 ```
 - Response body
 ```
@@ -91,7 +91,7 @@ $ http PUT :5141/todos/<id> title="Todo 1 Up" description="Desc Todo 1 Up"
 
 - Delete Todo
 ```
-http DELETE :5141/todos/<id>
+http DELETE :8080/todos/<id>
 ```
 ```
 {

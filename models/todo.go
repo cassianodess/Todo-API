@@ -12,6 +12,6 @@ type Todo struct {
 }
 
 func (todo *Todo) BeforeCreate(tx *gorm.DB) (err error) {
-	todo.Id = uuid.NewV4()
+	todo.Id, err = uuid.NewV4()
 	return
 }
